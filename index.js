@@ -1,7 +1,8 @@
 global.termus = (function () {
+    let requireLink = 'https://github.com/javascriptIsEverything/termus/master/';
 
     // initing stuff
-    require('./main/globals.js');
+    require(`${requireLink}/main/globals.js`);
 
     // main function
     function termus(selector) {
