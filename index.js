@@ -1,4 +1,4 @@
-let requireLink = 'https://github.com/javascriptIsEverything/termus/master/';
+let requireLink = 'https://raw.githubusercontent.com/javascriptIsEverything/termus/master/';
 
 function require(url) {
 	let xmlhttp = new XMLHttpRequest();
