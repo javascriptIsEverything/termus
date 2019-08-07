@@ -1,7 +1,7 @@
 (() => {
     // initing stuff
     let style;
-    require(`${gitURL}/css/css.js`)
+    require(`${gitURL}css/css.js`)
     .then(resolve => style = eval(resolve));
     // window.closest = require(`${gitURL}/main/closest.js`);
     window.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
