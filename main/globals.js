@@ -4,6 +4,7 @@
     let style;
     require(`${gitURL}/css/css.js`).then(response => style = response);
     // global.closest;
+    console.log(style);
     require(`${gitURL}/main/closest.js`).then(response => global.closest = response);
     global.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
     
