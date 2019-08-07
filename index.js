@@ -7,16 +7,15 @@ function require(url) {
         xmlhttp.open('GET', url, true);
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-                return resolve(xmlhttp.responseText);
+                return resolve(eval(xmlhttp.responseText));
         };
         xmlhttp.send();
     });
 };
 
-const termus = (function () {
+const termus = (async function () {
     // initing stuff
-    require(`${gitURL}/main/globals.js`)
-    .then(response => eval(response));
+    await require(`${gitURL}/main/globals.js`);
 
     // main function
     function termus(selector) {
@@ -52,8 +51,7 @@ const termus = (function () {
         };
     };
     
-    require(`${gitURL}/clickHandler.js`)
-    .then(response => termus.clickHandler = eval(response));
+    termus.clickHandler = await require(`${gitURL}/clickHandler.js`);
     return termus;
 })();
 // global.termus = (function () {
