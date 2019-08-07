@@ -14,9 +14,9 @@ function require(url) {
 };
 
 const termus = (function () {
-        // initing stuff
-    // require(`${gitURL}/main/globals.js`)
-    // .then(response => eval(response));
+    // initing stuff
+    require(`${gitURL}/main/globals.js`)
+    .then(response => eval(response));
 
     // main function
     function termus(selector) {
@@ -53,7 +53,7 @@ const termus = (function () {
     };
     
     require(`${gitURL}/clickHandler.js`)
-    .then(response => termus.clickHandler = response);
+    .then(response => termus.clickHandler = eval(response));
     return termus;
 })();
 // global.termus = (function () {

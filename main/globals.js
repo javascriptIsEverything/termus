@@ -1,22 +1,21 @@
-module.exports = void function () {
-    
+(() => {
     // initing stuff
     let style = require('../css/css.js');
-    global.closest = require('../main/closest.js');
-    global.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
+    window.closest = require('../main/closest.js');
+    window.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
     
-    global.body = document.body;
-    global.title = document.title;
+    window.body = document.body;
+    window.title = document.title;
 
-    global.terminalContainer = document.createElement `div`;
-    global.terminal = document.createElement `input`;
-    global.datalist = document.createElement `datalist`;
+    window.terminalContainer = document.createElement `div`;
+    window.terminal = document.createElement `input`;
+    window.datalist = document.createElement `datalist`;
 
     datalist.id = 'termus_commands';
     terminal.setAttribute('list', 'termus_commands');
     terminalContainer.appendChild(datalist);
 
-    global.commands = require('./commands.js');
+    window.commands = require('./commands.js');
     let changeDataList = () => {
         let prevCommands = terminal.value.trimLeft().split(/\s+/);
 
@@ -59,10 +58,10 @@ module.exports = void function () {
         changeDataList()
     })
 
-    global.findElement = e => document.elementFromPoint(e.pageX, e.pageY);
-    global.isExecuting = false;
+    window.findElement = e => document.elementFromPoint(e.pageX, e.pageY);
+    window.isExecuting = false;
 
-    global.eventPreventer = style.eventPreventer;
+    window.eventPreventer = style.eventPreventer;
 
     // terminal config
     terminalContainer.appendChild(style.default);
@@ -79,4 +78,4 @@ module.exports = void function () {
         let bool = terminalContainer.style.display == 'none' ? 0 : 1;
         terminalContainer.style.display = bool ? 'none' : 'block';
     });
-}()
+})()
