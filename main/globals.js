@@ -1,7 +1,6 @@
 (async () => {
     // initing stuff
     let global = {};
-    console.log(1);
     let style;
     require(`${gitURL}/css/css.js`).then(response => style = response);
     // global.closest;
@@ -17,7 +16,7 @@
 
     global.datalist.id = 'termus_commands';
     global.terminal.setAttribute('list', 'termus_commands');
-    global.terminalContainer.appendChild(datalist);
+    global.terminalContainer.appendChild(global.datalist);
 
     // global.commands = require(`${gitURL}/main/commands.js`);
     // let changeDataList = () => {
@@ -71,10 +70,10 @@
     global.terminalContainer.appendChild(style.default);
     global.body.appendChild(style.nodeEventPreventer);
     global.terminalContainer.id = 'terminalContainer_0xfff';
-    global.terminal.addEventListener('blur', () => termus.exec(terminal.value));
+    global.terminal.addEventListener('blur', () => termus.exec(global.terminal.value));
 
-    global.terminalContainer.appendChild(terminal);
-    global.body.appendChild(terminalContainer);
+    global.terminalContainer.appendChild(global.terminal);
+    global.body.appendChild(global.terminalContainer);
 
     // // hide or show terminal
     // document.addEventListener('keydown', e => {
