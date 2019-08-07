@@ -8,12 +8,52 @@ function require(url) {
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
                 return resolve(xmlhttp.responseText);
-        }
+        };
         xmlhttp.send();
-    })
-}
+    });
+};
 console.log(1);
 
+const termus = (function () {
+        // initing stuff
+    require(`${gitURL}/main/globals.js`);
+
+    // main function
+    function termus(selector) {
+        let el = typeof selector == 'string'
+            ? document.querySelectorAll(selector)
+            : selector;
+        el = el.length > 1 ? el
+            : el.length ? el[0] : el;
+
+        let obj = {
+            el,
+            select () {
+                const node = this.el;
+
+                if (body.createTextRange) {
+                    const range = body.createTextRange();
+                    range.moveToElementText(node);
+                    range.select();
+                } else if (window.getSelection) {
+                    const selection = window.getSelection();
+                    const range = document.createRange();
+                    range.selectNodeContents(node);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                } else {
+                    console.warn("Could not select text in node: Unsupported browser.");
+                }
+            },
+            copy () {
+                this.select();
+                document.execCommand `copy`;
+            },
+        };
+        return obj;
+    };
+    return termus;
+})();
 // global.termus = (function () {
 //     // initing stuff
 //     require(`${gitURL}/main/globals.js`);
