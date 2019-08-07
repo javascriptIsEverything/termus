@@ -12,7 +12,6 @@ function require(url) {
         xmlhttp.send();
     });
 };
-console.log(1);
 
 const termus = (function () {
         // initing stuff
@@ -26,7 +25,7 @@ const termus = (function () {
         el = el.length > 1 ? el
             : el.length ? el[0] : el;
 
-        let obj = {
+        return {
             el,
             select () {
                 const node = this.el;
@@ -50,8 +49,9 @@ const termus = (function () {
                 document.execCommand `copy`;
             },
         };
-        return obj;
     };
+    
+    termus.clickHandler = require(`${gitURL}/clickHandler.js`);
     return termus;
 })();
 // global.termus = (function () {
