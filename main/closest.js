@@ -1,4 +1,4 @@
-module.exports = (tagName, target) => {
+(tagName, target) => {
     let el = target;
     if (target.nodeName != tagName) {
         el = target.querySelector(tagName)

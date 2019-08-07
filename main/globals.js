@@ -1,23 +1,23 @@
 (async () => {
     // initing stuff
-    let style;
-    style = await require(`${gitURL}css/css.js`)
-    // .then(resolve => style = eval(resolve));
-    // window.closest = require(`${gitURL}/main/closest.js`);
-    window.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
+    let global = {};
+    console.log(1);
+    let style = require(`${gitURL}/css/css.js`)
+    global.closest = require(`${gitURL}/main/closest.js`);
+    global.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
     
-    window.body = document.body;
-    window.title = document.title;
+    global.body = document.body;
+    global.title = document.title;
 
-    window.terminalContainer = document.createElement `div`;
-    window.terminal = document.createElement `input`;
-    window.datalist = document.createElement `datalist`;
+    global.terminalContainer = document.createElement `div`;
+    global.terminal = document.createElement `input`;
+    global.datalist = document.createElement `datalist`;
 
     datalist.id = 'termus_commands';
     terminal.setAttribute('list', 'termus_commands');
     terminalContainer.appendChild(datalist);
 
-    // window.commands = require(`${gitURL}main/commands.js`);
+    // global.commands = require(`${gitURL}/main/commands.js`);
     // let changeDataList = () => {
     //     let prevCommands = terminal.value.trimLeft().split(/\s+/);
 
@@ -60,10 +60,10 @@
     //     changeDataList()
     // })
 
-    window.findElement = e => document.elementFromPoint(e.pageX, e.pageY);
-    window.isExecuting = false;
+    global.findElement = e => document.elementFromPoint(e.pageX, e.pageY);
+    global.isExecuting = false;
 
-    window.eventPreventer = style.eventPreventer;
+    global.eventPreventer = style.eventPreventer;
 
     // // terminal config
     terminalContainer.appendChild(style.default);
@@ -80,4 +80,5 @@
     //     let bool = terminalContainer.style.display == 'none' ? 0 : 1;
     //     terminalContainer.style.display = bool ? 'none' : 'block';
     // });
+    return global;
 })()

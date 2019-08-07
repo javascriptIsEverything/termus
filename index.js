@@ -1,21 +1,25 @@
 gitURL = 'https://raw.githubusercontent.com/javascriptIsEverything/termus/master/';
 
-function require(url) {
+async function require(url) {
     let xmlhttp = new XMLHttpRequest();
     
-    return new Promise((resolve, reject) => {
+    let prom = await new Promise((resolve, reject) => {
         xmlhttp.open('GET', url, true);
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-                return resolve(eval(xmlhttp.responseText));
+        xmlhttp.onreadystatechange = () => {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                resolve(eval(xmlhttp.responseText))
+            }
         };
         xmlhttp.send();
     });
+    return prom
 };
 
-const termus = (async function () {
+const termus = (function () {
     // initing stuff
-    await require(`${gitURL}/main/globals.js`);
+    window.closest = require(`${gitURL}/main/closest.js`)
+    require(`${gitURL}/main/globals.js`)
+    .then(response => console.log(response));
 
     // main function
     function termus(selector) {
@@ -51,7 +55,8 @@ const termus = (async function () {
         };
     };
     
-    termus.clickHandler = await require(`${gitURL}/clickHandler.js`);
+    require(`${gitURL}/clickHandler.js`)
+    .then(response => termus.clickHandler = response);
     return termus;
 })();
 // global.termus = (function () {
