@@ -1,27 +1,22 @@
-let requireLink = 'https://raw.githubusercontent.com/javascriptIsEverything/termus/master/';
+gitURL = 'https://raw.githubusercontent.com/javascriptIsEverything/termus/master/';
 
 function require(url) {
-	let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open('GET', url, true);
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-            return xmlhttp.responseText;
-    }
-    xmlhttp.send();
+    let xmlhttp = new XMLHttpRequest();
+    
+    return new Promise((resolve, reject) => {
+        xmlhttp.open('GET', url, true);
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                return resolve(xmlhttp.responseText);
+        }
+        xmlhttp.send();
+    })
 }
-
-console.log(require(requireLink+'log.js'));
-
-
-
-
-
+console.log(1);
 
 // global.termus = (function () {
-//     let requireLink = 'https://github.com/javascriptIsEverything/termus/master/';
-
 //     // initing stuff
-//     require(`${requireLink}/main/globals.js`);
+//     require(`${gitURL}/main/globals.js`);
 
 //     // main function
 //     function termus(selector) {
