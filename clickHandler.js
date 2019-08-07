@@ -1,4 +1,4 @@
-module.exports = (targetElement = '', isDone = true) => {
+(targetElement = '', isDone = true) => {
     // preventing alter events
     body.appendChild(eventPreventer);
     terminalContainer.remove();
