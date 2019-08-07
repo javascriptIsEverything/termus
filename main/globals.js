@@ -15,9 +15,9 @@
     global.terminal = document.createElement `input`;
     global.datalist = document.createElement `datalist`;
 
-    datalist.id = 'termus_commands';
-    terminal.setAttribute('list', 'termus_commands');
-    terminalContainer.appendChild(datalist);
+    global.datalist.id = 'termus_commands';
+    global.terminal.setAttribute('list', 'termus_commands');
+    global.terminalContainer.appendChild(datalist);
 
     // global.commands = require(`${gitURL}/main/commands.js`);
     // let changeDataList = () => {
@@ -68,13 +68,13 @@
     global.eventPreventer = style.eventPreventer;
 
     // // terminal config
-    terminalContainer.appendChild(style.default);
-    body.appendChild(style.nodeEventPreventer);
-    terminalContainer.id = 'terminalContainer_0xfff';
-    terminal.addEventListener('blur', () => termus.exec(terminal.value));
+    global.terminalContainer.appendChild(style.default);
+    global.body.appendChild(style.nodeEventPreventer);
+    global.terminalContainer.id = 'terminalContainer_0xfff';
+    global.terminal.addEventListener('blur', () => termus.exec(terminal.value));
 
-    terminalContainer.appendChild(terminal);
-    body.appendChild(terminalContainer);
+    global.terminalContainer.appendChild(terminal);
+    global.body.appendChild(terminalContainer);
 
     // // hide or show terminal
     // document.addEventListener('keydown', e => {
