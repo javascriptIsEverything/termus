@@ -2,8 +2,10 @@
     // initing stuff
     let global = {};
     console.log(1);
-    let style = require(`${gitURL}/css/css.js`)
-    global.closest = require(`${gitURL}/main/closest.js`);
+    let style;
+    require(`${gitURL}/css/css.js`).then(response => style = response);
+    // global.closest;
+    require(`${gitURL}/main/closest.js`).then(response => global.closest = response);
     global.isTag = (obj, tagName) => obj.tagName.toLowerCase() == tagName;
     
     global.body = document.body;
